@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
 
-export default function Menu({ highScore, currentScore, onPlay }) {
-  const handleOnPlay = () => {
-    const menu = document.querySelector("#menu");
-    menu.style.opacity = 0;
-    menu.style.transition = "opacity 300ms ease-out";
-    // add a delay before displaying the Game component to give time for the transition effect
-  };
-
+export default function Menu({
+  difficulty,
+  highScore,
+  currentScore,
+  onPlay,
+  onChangeDifficulty,
+}) {
+  useEffect(() => {
+    const button = document.querySelector(`button[data-value="${difficulty}"]`);
+  }, [difficulty]);
   return (
     <article
       id="menu"
@@ -22,6 +24,18 @@ export default function Menu({ highScore, currentScore, onPlay }) {
         <p className="txt-large">
           Your Score: <span className="txt-light">{currentScore}</span>
         </p>
+      </div>
+
+      <div className="diff_buttons">
+        <Button value="easy" onClick={() => onChangeDifficulty("easy")}>
+          Easy
+        </Button>
+        <Button value="normal" onClick={() => onChangeDifficulty("normal")}>
+          Normal
+        </Button>
+        <Button value="hard" onClick={() => onChangeDifficulty("hard")}>
+          Hard
+        </Button>
       </div>
       <div className="grid">
         <Button onClick={onPlay}>Play</Button>
