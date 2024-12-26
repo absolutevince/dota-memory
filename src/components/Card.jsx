@@ -1,16 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dotaLogo from "../asset/dota-logo.png";
 
-export default function Card({ children, cardId, onTurn }) {
-  const [flipStatus, setFlipStatus] = useState(false);
+export default function Card({ children, id, onFlip, isFlipped, isPaired }) {
   const handleTurn = () => {
-    setFlipStatus(true);
-    onTurn(cardId);
+    onFlip(id);
   };
 
   return (
     <div onClick={handleTurn} className="grid cursor-pointer">
-      {!flipStatus ? (
+      {isFlipped || isPaired ? (
         children
       ) : (
         <div

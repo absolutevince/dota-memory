@@ -5,7 +5,7 @@ export default async function fetchImages(fn) {
   const data = await res.json();
 
   const images = data.map((hero) => {
-    return imgUrl + hero.img;
+    return { imgUrl: imgUrl + hero.img, id: hero.id };
   });
 
   fn(images);
