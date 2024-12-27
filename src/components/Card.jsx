@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import dotaLogo from "../asset/dota-logo.png";
 
 export default function Card({ children, id, onFlip, isFlipped, isPaired }) {
-  const handleTurn = () => {
+  const handleFlip = () => {
     onFlip(id);
   };
 
   return (
-    <div onClick={handleTurn} className="grid cursor-pointer">
+    <div onClick={handleFlip} className="grid cursor-pointer">
       {isFlipped || isPaired ? (
         children
       ) : (

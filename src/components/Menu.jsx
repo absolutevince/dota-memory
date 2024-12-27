@@ -3,10 +3,11 @@ import Button from "./Button";
 
 export default function Menu({
   difficulty,
-  highScore,
+  bestScore,
   currentScore,
   onPlay,
   onChangeDifficulty,
+  onChangePage,
 }) {
   useEffect(() => {
     const button = document.querySelector(`button[data-value="${difficulty}"]`);
@@ -19,7 +20,7 @@ export default function Menu({
       <h2 className="text-xl text-red-400">Menu</h2>
       <div className="flex flex-col gap-4">
         <p className="txt-large">
-          High Score: <span className="txt-light">{highScore}</span>
+          High Score: <span className="txt-light">{bestScore}</span>
         </p>
         <p className="txt-large">
           Your Score: <span className="txt-light">{currentScore}</span>
@@ -38,7 +39,7 @@ export default function Menu({
         </Button>
       </div>
       <div className="grid">
-        <Button onClick={onPlay}>Play</Button>
+        <Button onClick={() => onChangePage("game")}>Play</Button>
       </div>
     </article>
   );

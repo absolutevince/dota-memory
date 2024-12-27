@@ -4,13 +4,14 @@ import Menu from "../../Menu";
 import Game from "../../Game";
 import fetchImages from "../../../utils/fetchImages";
 import generateImageSet from "../../../utils/generateImageSet";
+import GameOver from "../../GameOver";
 
 export default function Main({ images }) {
-  const [isIngame, setIsIngame] = useState(false);
   const [difficulty, setDifficulty] = useState("easy");
-  const [highScore, setHigScore] = useState(0);
-  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  const [currentScore, setCurrentScore] = useState(0);
   const imageSet = generateImageSet(images, difficulty);
+  const [activePage, setActivePage] = useState("menu");
 
   const play = () => {
     setIsIngame(true);
@@ -19,17 +20,49 @@ export default function Main({ images }) {
   const changeDifficulty = (value) => {
     setDifficulty(value);
   };
+
+  const changeCurrentScore = (score) => {
+    setCurrentScore(score);
+  };
+
+  const changeBestScore = (score) => {
+    setBestScore(score);
+  };
+
+  const changePage = (pageName) => {
+    setActivePage(pageName);
+  };
+
+  useEffect(() => {
+    setActivePage("gameover");
+  }, [currentScore]);
+
   return (
     <main className="flex h-[calc(100vh_-_70px)] justify-center p-8">
-      {isIngame === false ? (
+      {activePage === "menu" && (
         <Menu
           currentScore={score}
-          highScore={highScore}
+          bestScore={bestScore}
           onPlay={play}
           onChangeDifficulty={changeDifficulty}
+          onChangePage={changePage}
         />
-      ) : (
-        <Game imageSet={imageSet} />
+      )}
+      {activePage === "game" && (
+        <Game
+          imageSet={imageSet}
+          bestScore={bestScore}
+          onChangeCurrentScore={changeCurrentScore}
+          onChangePage={changePage}
+        />
+      )}
+      {activePage === "gameOver" && (
+        <GameOver
+          bestScore={bestScore}
+          currentScore={currentScore}
+          onChangeBestScore={changeBestScore}
+          onChangePage={changePage}
+        />
       )}
     </main>
   );
