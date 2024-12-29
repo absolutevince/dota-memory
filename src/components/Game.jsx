@@ -7,7 +7,10 @@ import formatLetteredId from "../utils/formatLetteredId";
 const imageSize = "100px";
 
 export default function Game({ imageSet, onChangeCurrentScore }) {
-  const [flippedCard, setFlippedCard] = useState({ cards: [], pairAttempts: 0 });
+  const [flippedCard, setFlippedCard] = useState({
+    cards: [],
+    pairAttempts: 0,
+  });
   const [pairs, setPairs] = useState([]);
   const images = imageSet.images;
   const size = imageSet.size;
@@ -24,7 +27,10 @@ export default function Game({ imageSet, onChangeCurrentScore }) {
         if (compareTwoCardsId(flippedCard.cards[0], flippedCard.cards[1])) {
           setPairs([...pairs, formatLetteredId(flippedCard.cards[0])]);
         }
-        setFlippedCard({ ...flippedCard, pairAttempts: flippedCard.pairAttempts + 1 })
+        setFlippedCard({
+          ...flippedCard,
+          pairAttempts: flippedCard.pairAttempts + 1,
+        });
       }
     }
     if (flippedCard.cards.length === 3) {
@@ -40,7 +46,6 @@ export default function Game({ imageSet, onChangeCurrentScore }) {
       ...flippedCard,
       cards: [...flippedCard.cards, id],
     });
-
   };
 
   const checkIsPaired = (id) => {
@@ -62,7 +67,8 @@ export default function Game({ imageSet, onChangeCurrentScore }) {
     <section className="bg-slate-800 w-full h-full p-4 overflow-hidden">
       <div>
         <p>
-          {pairs.length} / {cardsLength} | Pairing Attempts: {flippedCard.pairAttempts}
+          {pairs.length} / {cardsLength} | Pairing Attempts:{" "}
+          {flippedCard.pairAttempts}
         </p>
       </div>
       <div className=" grid gap-2 justify-center" style={containerStyle}>

@@ -3,6 +3,7 @@
 A Memory/Card-Pairing game made with React + Tailwindcss
 
 ## How to play?
+- Go to [Dota Memory](https://dota-memory.vercel.app/)
 - On the Menu screen, choose a difficulty (Easy, Normal, Hard) then click "Play"
 - The Game is fairly simple, click a face-down card and try to find it's pair 
 - The lesser the attempt the better (failed and success pair are to be counted as an attempt)
