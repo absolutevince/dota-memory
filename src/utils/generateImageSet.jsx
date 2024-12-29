@@ -12,7 +12,7 @@ export default function generateImageSet(images, difficulty) {
       return { ...img, cardId: img.id + "b" };
     }),
   ];
-  const randomizedArray = getRandomItems(cp, cp.length);
 
-  return { size: set.size, images: randomizedArray };
+  return { size: set.size, images: getRandomItems(cp, cp.length) };
+  ;
 }

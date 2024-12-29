@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
 import dotaLogo from "../asset/dota-logo.png";
 
 export default function Card({ children, id, onFlip, isFlipped, isPaired }) {
   const handleFlip = () => {
-    if (isPaired) return
+    if (isPaired) return;
     onFlip(id);
   };
 

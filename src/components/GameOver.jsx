@@ -18,10 +18,10 @@ export default function GameOver({
       <div>
         {isBestScore ? (
           <p>
-            Congratulations!! You got the Best Score with {currentScore} flips
+            Congratulations!! You got the Best Score with {currentScore} attempts
           </p>
         ) : (
-          <p>You've made it in {currentScore} flips</p>
+          <p>You've made it in {currentScore} attempts</p>
         )}
       </div>
       <Button onClick={() => onChangePage("menu")}>Continue</Button>

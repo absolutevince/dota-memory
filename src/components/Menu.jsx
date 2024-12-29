@@ -23,13 +23,13 @@ export default function Menu({
       </div>
 
       <div className="diff_buttons">
-        <Button value="easy" className={difficulty === "easy" ? "bg-red-400 text-slate-800" : ""} onClick={() => onChangeDifficulty("easy")}>
+        <Button value="easy" className={difficulty === "easy" ? "bg-red-400 text-slate-900" : ""} onClick={() => onChangeDifficulty("easy")}>
           Easy
         </Button>
-        <Button value="normal" className={difficulty === "normal" ? "bg-red-400 text-slate-800 " : ""} onClick={() => onChangeDifficulty("normal")}>
+        <Button value="normal" className={difficulty === "normal" ? "bg-red-400 text-slate-900 " : ""} onClick={() => onChangeDifficulty("normal")}>
           Normal
         </Button>
-        <Button value="hard" className={difficulty === "hard" ? "bg-red-400 text-slate-800" : ""} onClick={() => onChangeDifficulty("hard")}>
+        <Button value="hard" className={difficulty === "hard" ? "bg-red-400 text-slate-900" : ""} onClick={() => onChangeDifficulty("hard")}>
           Hard
         </Button>
       </div>
