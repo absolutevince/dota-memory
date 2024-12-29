@@ -46,6 +46,7 @@ export default function Main({ images }) {
           onPlay={play}
           onChangeDifficulty={changeDifficulty}
           onChangePage={changePage}
+          difficulty={difficulty}
         />
       )}
       {activePage === "game" && (

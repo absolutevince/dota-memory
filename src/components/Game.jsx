@@ -20,9 +20,10 @@ export default function Game({ imageSet, onChangeCurrentScore }) {
 
   useEffect(() => {
     if (flippedCard.cards.length === 2) {
-      if (compareTwoCardsId(flippedCard.cards[0], flippedCard.cards[1])) {
-
-        setPairs([...pairs, formatLetteredId(flippedCard.cards[0])]);
+      if (!checkIsPaired(flippedCard.cards[0])) {
+        if (compareTwoCardsId(flippedCard.cards[0], flippedCard.cards[1])) {
+          setPairs([...pairs, formatLetteredId(flippedCard.cards[0])]);
+        }
       }
     }
     if (flippedCard.cards.length === 3) {
@@ -38,7 +39,7 @@ export default function Game({ imageSet, onChangeCurrentScore }) {
   };
 
   const checkIsPaired = (id) => {
-    return pairs.includes(`${id}`);
+    return pairs.includes(formatLetteredId(id));
   };
 
   const checkIsFlipped = (id) => {
@@ -66,7 +67,7 @@ export default function Game({ imageSet, onChangeCurrentScore }) {
               key={index}
               onFlip={() => handleCardFlip(img.cardId)}
               isFlipped={checkIsFlipped(img.cardId)}
-              isPaired={checkIsPaired(img.id)}
+              isPaired={checkIsPaired(img.cardId)}
               id={img.id}
             >
               <Image src={img.imgUrl} width="100%" height="100%" />
