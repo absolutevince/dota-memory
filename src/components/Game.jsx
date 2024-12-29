@@ -3,11 +3,10 @@ import Card from "./Card";
 import Image from "./Image";
 import compareTwoCardsId from "../utils/compareTwoCards";
 import formatLetteredId from "../utils/formatLetteredId";
-import GameOver from "./GameOver";
 
 const imageSize = "100px";
 
-export default function Game({ imageSet, bestScore, onChangeCurrentScore }) {
+export default function Game({ imageSet, onChangeCurrentScore }) {
   const [flippedCard, setFlippedCard] = useState({ cards: [], flips: 0 });
   const [pairs, setPairs] = useState([]);
   const images = imageSet.images;
@@ -22,6 +21,7 @@ export default function Game({ imageSet, bestScore, onChangeCurrentScore }) {
   useEffect(() => {
     if (flippedCard.cards.length === 2) {
       if (compareTwoCardsId(flippedCard.cards[0], flippedCard.cards[1])) {
+
         setPairs([...pairs, formatLetteredId(flippedCard.cards[0])]);
       }
     }
@@ -50,7 +50,7 @@ export default function Game({ imageSet, bestScore, onChangeCurrentScore }) {
     if (pairs.length === cardsLength) {
       onChangeCurrentScore(flippedCard.flips);
     }
-  });
+  }, [pairs.length]);
 
   return (
     <section className="bg-slate-800 w-full h-full p-4 overflow-hidden">

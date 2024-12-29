@@ -3,7 +3,9 @@ import dotaLogo from "../asset/dota-logo.png";
 
 export default function Card({ children, id, onFlip, isFlipped, isPaired }) {
   const handleFlip = () => {
-    onFlip(id);
+    if (!isFlipped) {
+      onFlip(id);
+    }
   };
 
   return (
